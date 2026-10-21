@@ -97,6 +97,8 @@ label{display:block;font-size:13px;font-weight:600;letter-spacing:.02em;color:va
 .tabs button{padding:0 4px;font-size:15px}
 .msgs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.msgs a{font-size:13px;font-weight:700;text-decoration:none;color:var(--plum2);background:var(--lav);border-radius:12px;padding:8px 10px}
 .tpl{border-top:1px solid var(--lav);padding:8px 0}.tpl input{min-height:38px;font-weight:700;margin-bottom:4px}.tpl textarea{min-height:60px;font-size:15px}.tpl .row button{min-height:38px;font-size:14px}
+.b.xp{background:#fff;color:var(--plum2);border:1px dashed var(--vio);cursor:pointer}.b.xp.ok{border-style:solid}.b.newpm{background:#e6a1c6;color:#3b1450;cursor:pointer}
+.xps{border:1px solid var(--lav2);border-radius:14px;padding:10px;margin:8px 0;background:#fcfaff}.xps .hd{display:flex;align-items:center;gap:8px;font-weight:700}.xps .hd .st{margin-left:auto;font-size:12px}.xps .row{margin-top:6px}.xps input{margin-top:6px}
 .b.stale{background:#d8ae5a;color:#2a1636;cursor:pointer}
 .pcheck{display:grid;grid-template-columns:1fr 1fr;gap:6px}.pcheck label{display:flex;align-items:center;gap:6px;margin:0;font-size:14px;font-weight:500;color:var(--ink);border:1px solid var(--lav2);border-radius:12px;padding:6px 8px;min-height:42px;background:#fcfaff}.pcheck input{width:20px;height:20px;min-height:0;accent-color:var(--vio)}
 .pbar{height:8px;border-radius:4px;background:var(--lav);margin:6px 0 2px;overflow:hidden}.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--vio2),var(--pink));transition:width .2s}
@@ -128,7 +130,7 @@ header>*:not(.h3d){position:relative;z-index:1}
 @media (max-width:560px){.rack{transform:scale(.62);transform-origin:right center;right:92px;opacity:.8}}
 @media (prefers-reduced-motion:reduce){.silk,.car,.hg b:after{animation:none!important}.car{transform:rotateY(20deg)}}
 </style></head><body>
-<header><div class="h3d" aria-hidden="true"><span class="silk a"></span><span class="silk b"></span><div class="rack"><div class="car"><span class="hg" style="--i:0;--c:#e6a1c6"><i></i><b></b></span><span class="hg" style="--i:1;--c:#f3dfae"><i></i><b></b></span><span class="hg" style="--i:2;--c:#9b5fd0"><i></i><b></b></span><span class="hg" style="--i:3;--c:#fff"><i></i><b></b></span><span class="hg" style="--i:4;--c:#c99a3e"><i></i><b></b></span><span class="hg" style="--i:5;--c:#5a2275"><i></i><b></b></span></div></div></div><div class="kick">✦ Resale boutique</div><h1>Shantell's Closet<span class="ver" id="ver">v1.9.0</span></h1></header>
+<header><div class="h3d" aria-hidden="true"><span class="silk a"></span><span class="silk b"></span><div class="rack"><div class="car"><span class="hg" style="--i:0;--c:#e6a1c6"><i></i><b></b></span><span class="hg" style="--i:1;--c:#f3dfae"><i></i><b></b></span><span class="hg" style="--i:2;--c:#9b5fd0"><i></i><b></b></span><span class="hg" style="--i:3;--c:#fff"><i></i><b></b></span><span class="hg" style="--i:4;--c:#c99a3e"><i></i><b></b></span><span class="hg" style="--i:5;--c:#5a2275"><i></i><b></b></span></div></div></div><div class="kick">✦ Resale boutique</div><h1>Shantell's Closet<span class="ver" id="ver">v1.10.0</span></h1></header>
 <button class="upd" id="updBar">A new version is ready. Tap to update</button>
 <div class="tabs"><button id="tStock" class="on">In Stock</button><button id="tSold">Sold</button><button id="tBuyers">Buyers</button><button id="tMore">Backup</button></div>
 <div class="wrap">
@@ -167,7 +169,7 @@ header>*:not(.h3d){position:relative;z-index:1}
   <p><button id="tplDl" style="width:100%">Download blank CSV template</button></p>
   <p><button class="primary" id="tourBtn" style="width:100%">✨ What's new</button></p>
   <p><button id="updChk" style="width:100%">Check for updates</button></p>
-  <p class="meta" id="updMsg">App version v1.9.0</p>
+  <p class="meta" id="updMsg">App version v1.10.0</p>
   <p class="meta">Everything is saved only on this device. Make a backup now and then.</p>
  </section>
 </div>
@@ -187,6 +189,7 @@ header>*:not(.h3d){position:relative;z-index:1}
  <label>Photo checklist</label><div class="pcheck" id="fPC"></div><div class="pbar"><i id="fPBar" style="width:0"></i></div><div class="meta" id="fPMsg"></div>
  <label>Photo</label><input id="fPhoto" type="file" accept="image/*"><img id="fPrev" class="hidden" style="width:90px;height:90px;object-fit:cover;border-radius:12px;margin-top:6px"><button id="fRmPhoto" class="hidden" style="margin-top:6px">Remove photo</button>
  <div class="row" style="margin-top:16px"><button id="eCancel">Cancel</button><button class="primary" id="eSave">Save</button></div>
+ <p style="margin:8px 0 0"><button id="eSaveXP" style="width:100%">Save &amp; 📤 post to my sites</button></p>
 </div></div>
 
 <div class="modal" id="mSold"><div class="sheet">
@@ -212,6 +215,14 @@ header>*:not(.h3d){position:relative;z-index:1}
  <h2>Delist everywhere else</h2><div class="meta" id="dName"></div>
  <div id="dList"></div>
  <div class="row" style="margin-top:16px"><button class="primary" id="dDone">Done</button></div>
+</div></div>
+<div class="modal" id="mXP"><div class="sheet">
+ <h2>📤 Post to my sites</h2><div class="meta" id="xpName"></div>
+ <p class="meta">These sites don't let other apps post for you, so this helper does the typing: tap <b>Copy &amp; open</b>, paste into the new listing, add photos, post, then paste the new listing link back here.</p>
+ <div id="xpList"></div>
+ <details class="panel"><summary><b>More sites</b></summary><div id="xpMore"></div></details>
+ <details class="panel"><summary><b>Edit listing templates</b></summary><p class="meta">Placeholders: {title} {brand} {size} {color} {condition} {category} {price} {notes}. Lines with only empty placeholders are skipped.</p><label for="xpTplSite">Site</label><select id="xpTplSite"></select><textarea id="xpTpl" style="min-height:140px"></textarea><p><button id="xpTplReset">Reset this template</button></p></details>
+ <div class="row" style="margin-top:12px"><button class="primary" id="xpDone">Done</button></div>
 </div></div>
 <div class="tour" id="tour"><div class="hole" id="tHole"></div><div class="tc" id="tCard"><div class="k" id="tStep"></div><h3 id="tTitle"></h3><p id="tText"></p><div class="row"><button id="tSkip">Skip</button><button id="tNext">Next</button></div></div></div>
 <div class="toast" id="toast"><div id="toastMsg"></div><button id="undo">Undo</button></div>
@@ -250,7 +261,7 @@ $('chips').onclick=function(e){var f=e.target.getAttribute('data-f');if(f){filte
 $('q').oninput=render;
 function tab(t){['Stock','Sold','Buyers','More'].forEach(function(n){$('v'+n).classList.toggle('hidden',n!==t);$('t'+n).classList.toggle('on',n===t)});$('add').style.display=t==='Stock'?'':'none'}
 $('tStock').onclick=function(){tab('Stock')};$('tSold').onclick=function(){tab('Sold')};$('tMore').onclick=function(){tab('More')};$('tBuyers').onclick=function(){tab('Buyers');renderBuyers()};
-function badges(it){return badges0(it)+(isStale(it)?'<span class="b stale" data-a="stale" data-id="'+it.id+'">Needs a refresh</span>':'')}
+function badges(it){return (it.autoNew&&!it.sold?'<span class="b newpm" data-a="newok" data-id="'+it.id+'" title="Tap to clear">New from Poshmark ✕</span>':'')+badges0(it)+xpBadges(it)+(isStale(it)?'<span class="b stale" data-a="stale" data-id="'+it.id+'">Needs a refresh</span>':'')}
 function badges0(it){var ps=(it.platforms||[]).slice().sort(function(a,b){return ORDER.indexOf(a)-ORDER.indexOf(b)});
  if(it.sold){var h=ps.map(function(k){return '<span class="b sold">'+esc(pName(k))+' · SOLD</span>'}).join('');
   h+='<span class="b soldon">SOLD on '+esc(pName(it.soldPlatform))+' · out of stock</span>';var pd=pendingDelist(it);if(pd.length)h+='<span class="b else" data-a="delist" data-id="'+it.id+'">Still listed elsewhere ('+pd.length+')</span>';return h}
@@ -261,7 +272,7 @@ function badges0(it){var ps=(it.platforms||[]).slice().sort(function(a,b){return
 function card(it){var img=it.photo?'<img src="'+it.photo+'" alt="">':'<div class="ph">'+esc((it.name||'?')[0].toUpperCase())+'</div>';
  var meta=[it.brand,it.size&&('Size '+it.size),it.color,it.condition,!it.sold&&('Qty '+qtyOf(it))].filter(Boolean).map(esc).join(' · ');
  var acts=it.sold?(pendingDelist(it).length?'<button data-a="delist" data-id="'+it.id+'">Delist checklist</button>':'')+'<button data-a="unsell" data-id="'+it.id+'">Move back to stock</button><button data-a="del" data-id="'+it.id+'">Delete</button>'
-  :'<button class="sold-btn" data-a="sell" data-id="'+it.id+'">Mark Sold</button><button data-a="edit" data-id="'+it.id+'">Edit</button><button data-a="del" data-id="'+it.id+'">🗑</button></div><div class="qacts"><button data-a="qsell" data-p="me" data-id="'+it.id+'">Sold on Mercari</button><button data-a="qsell" data-p="fb" data-id="'+it.id+'">Sold on Facebook</button><button data-a="sell" data-id="'+it.id+'">Sold on…</button>';
+  :'<button class="sold-btn" data-a="sell" data-id="'+it.id+'">Mark Sold</button><button data-a="edit" data-id="'+it.id+'">Edit</button><button data-a="xpost" data-id="'+it.id+'">📤 Post</button><button data-a="del" data-id="'+it.id+'">🗑</button></div><div class="qacts"><button data-a="qsell" data-p="me" data-id="'+it.id+'">Sold on Mercari</button><button data-a="qsell" data-p="fb" data-id="'+it.id+'">Sold on Facebook</button><button data-a="sell" data-id="'+it.id+'">Sold on…</button>';
  var pr=it.sold?'Sold '+money(it.soldPrice)+' · '+new Date(it.soldDate).toLocaleDateString():money(it.price);
  return '<div class="card" data-id="'+it.id+'">'+img+'<div class="info"><div class="name">'+esc(it.name)+'</div><div class="meta">'+meta+'</div><div class="price">'+pr+'</div><div class="badges">'+badges(it)+'</div>'+(it.notes?'<div class="meta">'+esc(it.notes)+'</div>':'')+linksHtml(it)+msgHtml(it)+'<div class="acts">'+acts+'</div></div></div>'}
 function render(){chips();var q=$('q').value.trim().toLowerCase();
@@ -296,15 +307,18 @@ $('eSave').onclick=function(){var name=$('fName').value.trim();if(!name){alert('
  var d={name:name,brand:$('fBrand').value.trim(),category:$('fCat').value,size:$('fSize').value.trim(),color:$('fColor').value.trim(),condition:$('fCond').value,price:$('fPrice').value,cost:$('fCost').value,notes:$('fNotes').value.trim(),photo:photo,
   platforms:curChecked(),photoChecks:pcChecked()};var qv=parseInt($('fQty').value,10);d.qty=isNaN(qv)?1:Math.max(0,qv);var u=$('fUrl').value.trim();if(u){var pk=detectPlat(u);d.url=u;d.links=Object.assign({},(editId&&find(editId).links)||{});d.links[pk||'other']=u}else{d.url='';}
  if(editId){var it=find(editId);for(var k in d)it[k]=d[k]}else{d.id=Date.now().toString(36)+Math.random().toString(36).slice(2,6);d.added=new Date().toISOString();d.sold=false;items.unshift(d)}
- save();$('mEdit').classList.remove('show');render()};
+ save();$('mEdit').classList.remove('show');render();var sv=editId?find(editId):d;if(xpAfter){xpAfter=false;openXP(sv)}};
+$('eSaveXP').onclick=function(){xpAfter=true;$('eSave').click();xpAfter=false};var xpAfter=false;
 document.body.addEventListener('click',function(e){var a=e.target.getAttribute('data-a'),id=e.target.getAttribute('data-id');if(!a)return;var it=find(id);if(!it)return;
  if(a==='edit')openEdit(it);
+ if(a==='xpost')openXP(it);
+ if(a==='newok'){delete it.autoNew;save();render()}
  if(a==='qsell'){markSold(it,e.target.getAttribute('data-p'),it.price||'0')}
  if(a==='delist')openDelist(it);
  if(a==='stale'){var si=staleInfo(it);toast('<b>Needs a refresh</b> ('+si.days+' days listed, '+(si.likes==null?'no likes data':si.likes+' likes')+')<br>Try: drop the price 10%, take a new cover photo, share it to a party, or send an offer to likers.')}
  if(a==='more'){e.target.parentNode.innerHTML=(it.platforms||[]).map(function(k){return '<span class="b" style="background:'+pCol(k)+'">'+esc(pName(k))+'</span>'}).join('')}
  if(a==='sell'){soldId=id;$('sName').textContent=it.name;$('sPrice').value=it.price||'';var lp=it.platforms||[];$('sPlat').innerHTML=lp.map(function(k){return '<option value="'+k+'">'+esc(pName(k))+'</option>'}).join('')+'<optgroup label="Other platforms">'+ORDER.filter(function(k){return lp.indexOf(k)<0}).map(function(k){return '<option value="'+k+'">'+esc(P[k])+'</option>'}).join('')+'<option value="other">Other</option></optgroup>';$('sPlat').value=lp[0]||'other';$('mSold').classList.add('show')}
- if(a==='del'&&confirm('Delete "'+it.name+'"? This cannot be undone.')){items=items.filter(function(i){return i.id!==id});save();render()}
+ if(a==='del'&&confirm('Delete "'+it.name+'"? This cannot be undone.')){items=items.filter(function(i){return i.id!==id});dismissItem(it);save();render();renderNew()}
  if(a==='unsell'){it.sold=false;it.qty=Math.max(1,parseInt(it.qty,10)||0);delete it.delist;delete it.soldPrice;delete it.soldPlatform;delete it.soldDate;save();render();tab('Stock')}});
 $('sCancel').onclick=function(){$('mSold').classList.remove('show')};
 $('sOk').onclick=function(){var it=find(soldId);if(!it)return;$('mSold').classList.remove('show');markSold(it,$('sPlat').value,$('sPrice').value||'0')};
@@ -321,10 +335,10 @@ $('csv').onclick=function(){var cols=['name','brand','category','size','color','
  var q=function(v){v=v==null?'':String(v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
  var rows=items.map(function(i){return cols.map(function(c){if(c==='platforms')return q((i.platforms||[]).map(pName).join('; '));if(c==='status')return i.sold?'Sold':'In stock';if(c==='soldPlatform')return q(i.sold?pName(i.soldPlatform):'');if(c==='qty')return qtyOf(i);return q(i[c])}).join(',')});
  dl('shantells_closet_'+today()+'.csv',[cols.join(',')].concat(rows).join('\n'),'text/csv')};
-$('bak').onclick=function(){dl('shantells_closet_backup_'+today()+'.json',JSON.stringify({app:'chantel_closet',v:2,customPlatforms:custom,items:items,buyers:BD.buyers,templates:BD.templates}),'application/json')};
+$('bak').onclick=function(){dl('shantells_closet_backup_'+today()+'.json',JSON.stringify({app:'chantel_closet',v:2,customPlatforms:custom,items:items,buyers:BD.buyers,templates:BD.templates,dismissedPosh:dismissed(),poshSeen:poshSeen(),xpTemplates:xpTpls()}),'application/json')};
 $('resBtn').onclick=function(){$('resFile').click()};
 $('resFile').onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result),arr=Array.isArray(d)?d:d.items;if(!Array.isArray(arr))throw 0;
- if(confirm('Replace your current '+items.length+' items with '+arr.length+' items from the backup?'+(Array.isArray(d.buyers)?' Your buyers list will be replaced with '+d.buyers.length+' buyers.':''))){var oc=custom;custom=(d.customPlatforms||[]).slice();oc.forEach(function(c){if(!custom.some(function(x){return x.id===c.id}))custom.push(c)});items=migrate(d);save();if(Array.isArray(d.buyers)){BD.buyers=d.buyers;if(Array.isArray(d.templates))BD.templates=d.templates;bsave()}render();toast('Backup restored'+(Array.isArray(d.buyers)?' (incl. '+d.buyers.length+' buyers).':'.'))}}catch(e){alert('That file is not a valid backup.')}};r.readAsText(f);this.value=''};
+ if(confirm('Replace your current '+items.length+' items with '+arr.length+' items from the backup?'+(Array.isArray(d.buyers)?' Your buyers list will be replaced with '+d.buyers.length+' buyers.':''))){var oc=custom;custom=(d.customPlatforms||[]).slice();oc.forEach(function(c){if(!custom.some(function(x){return x.id===c.id}))custom.push(c)});items=migrate(d);save();restoreExtras(d);if(Array.isArray(d.buyers)){BD.buyers=d.buyers;if(Array.isArray(d.templates))BD.templates=d.templates;bsave()}render();toast('Backup restored'+(Array.isArray(d.buyers)?' (incl. '+d.buyers.length+' buyers).':'.'))}}catch(e){alert('That file is not a valid backup.')}};r.readAsText(f);this.value=''};
 // (first render moved to end of script in v1.3: fixes startup crash for items with a URL but no links)
 // ---- v1.1: listing links ----
 var DOMAINS=[['poshmark','pm'],['posh.mk','pm'],['mercari','me'],['merc.li','me'],['facebook.com/marketplace','fb'],['fb.com/marketplace','fb'],['facebook','fb'],['fb.me','fb'],['instagram','ig'],['instagr.am','ig'],['nextdoor','nd'],['ebay','eb'],['ebay.us','eb'],['depop','dp'],['vinted','vi'],['etsy','et'],['offerup','ou'],['craigslist','cl'],['tiktok','tt'],['thredup','tu'],['therealreal','rr'],['grailed','gr'],['myshopify','sh']];
@@ -403,7 +417,7 @@ $('iOk').onclick=function(){var res=buildItems(false).filter(function(x){return 
  save();$('mImp').classList.remove('show');render();tab('Stock');toast('Imported '+res.length+' item'+(res.length===1?'':'s')+'.',function(){items=before;save();render()})};
 $('tplDl').onclick=function(){dl('shantells_closet_template.csv','Title,Brand,Size,Price,Cost,Quantity,Platform,URL,Status,Category,Color,Condition,Notes\nExample: Floral Wrap Dress,Free People,M,38,12,1,Poshmark; Mercari,https://poshmark.com/listing/Floral-Wrap-Dress-123abc,In stock,Dresses,Pink,Like new,Delete this example row\n','text/csv')};
 // ---- updates ----
-var APP_VERSION='1.9.0',swReg=null,reloading=false;
+var APP_VERSION='1.10.0',swReg=null,reloading=false;
 function showUpd(){$('updBar').classList.add('show');$('updMsg').textContent='App version v'+APP_VERSION+' — a new version is ready.'}
 function watch(reg){if(reg.waiting&&navigator.serviceWorker.controller)showUpd();
  reg.addEventListener('updatefound',function(){var nw=reg.installing;if(!nw)return;nw.addEventListener('statechange',function(){if(nw.state==='installed'&&navigator.serviceWorker.controller)showUpd()})})}
@@ -457,7 +471,7 @@ function syncSales(manual){$('syncMsg').textContent=manual?'Checking Poshmark…
    save();render();toast('<b>'+n+' item'+(n===1?'':'s')+' sold on Poshmark</b><br>'+names.slice(0,5).map(esc).join(', ')+(n>5?'…':'')+(items.some(function(i){return pendingDelist(i).length})?'<br>Tap the red "Still listed elsewhere" badges to delist.':''))}
   var gt=f.generated_at?new Date(f.generated_at).toLocaleString():'';
   $('syncMsg').textContent=(n?n+' sold on Poshmark marked. ':manual?'No new Poshmark sales. ':'')+(gt?'Poshmark data from '+gt+'.':'');
-  render();renderNew();remind()}).catch(function(){$('syncMsg').textContent=manual?'Could not load Poshmark data — are you online?':''})}
+  autoPick(f);render();renderNew();remind()}).catch(function(){$('syncMsg').textContent=manual?'Could not load Poshmark data — are you online?':''})}
 $('syncBtn').onclick=function(){syncSales(true)};
 function newItems(){if(!feed)return [];var map=itemIds(),dm=dismissed();return (feed.available||[]).filter(function(a){var x=lid(a.url);return x&&!map[x]&&!dm[x]})}
 var showAllNew=false;
@@ -482,6 +496,86 @@ $('viAdd').onclick=function(){var u=($('viUrl').value.match(/https?:\/\/\S+/i)||
  var it={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),added:new Date().toISOString(),name:t,brand:'',category:'',size:'',color:'',condition:'',price:num($('viPrice').value),qty:isNaN(q)?1:Math.max(0,q),cost:'',notes:'',photo:null,platforms:['vi'],url:u,links:{vi:u},sold:false};
  items.unshift(it);save();render();tab('Stock');['viUrl','viTitle','viPrice'].forEach(function(i){$(i).value=''});$('viQty').value=1;m.textContent='Added "'+t+'".';
  var id=it.id;toast('Added <b>'+esc(t)+'</b> from Vinted.',function(){items=items.filter(function(i){return i.id!==id});save();render()})};
+// ---- v1.10: Post to my sites (crosslist helper: copy + open; no site has a public listing API) ----
+var CREATE={pm:'https://poshmark.com/create-listing',vi:'https://www.vinted.com/items/new',me:'https://www.mercari.com/sell/',eb:'https://www.ebay.com/sl/prelist/suggest',dp:'https://www.depop.com/products/create/',fb:'https://www.facebook.com/marketplace/create/item',et:'https://www.etsy.com/your/shops/me/listing-editor/create',ou:'https://offerup.com/post',gr:'https://www.grailed.com/sell/new',nd:'https://nextdoor.com/for_sale_and_free/',ig:'https://www.instagram.com/'};
+var TLIM={pm:80,me:80,eb:80,vi:100,gr:60,et:140};
+var XTKEY='chantel_closet_xp_templates';
+var DEF_XT={pm:'{title}\n\n{notes}\n\nBrand: {brand}\nSize: {size}\nColor: {color}\nCondition: {condition}\nCategory: {category}\n\nPrice: ${price}\n💜 Bundle 2+ items for a discount. Offers welcome!',
+ vi:'{title}\n\n{notes}\n\nBrand: {brand}\nSize: {size}\nColour: {color}\nCondition: {condition}\n\nPrice: ${price}\n💜 Bundle discounts available. Smoke-free home.',
+ _:'{title}\n\n{notes}\n\nBrand: {brand}\nSize: {size}\nColor: {color}\nCondition: {condition}\n\nPrice: ${price}'};
+function xpTpls(){try{return JSON.parse(localStorage.getItem(XTKEY))||{}}catch(e){return {}}}
+function xpTpl(k){var t=xpTpls();return t[k]||DEF_XT[k]||DEF_XT._}
+function xpTitle(it,k){var t=[it.brand&&String(it.name||'').toLowerCase().indexOf(String(it.brand).toLowerCase())<0?it.brand:'',it.name].filter(Boolean).join(' '),L=TLIM[k];return L&&t.length>L?t.slice(0,L-1).trim()+'…':t}
+function xpText(it,k){var v={title:xpTitle(it,k),brand:it.brand||'',size:it.size||'',color:it.color||'',condition:it.condition||'',category:it.category||'',price:it.price?Number(it.price).toFixed(2).replace(/\.00$/,''):'',notes:(it.notes||'').replace(/^Poshmark listed \d{4}-\d\d-\d\d$/,'')};
+ return xpTpl(k).split('\n').filter(function(line){var ph=line.match(/\{(\w+)\}/g);return !ph||ph.some(function(x){return v[x.slice(1,-1)]})}).map(function(line){return line.replace(/\{(\w+)\}/g,function(m,n){return v[n]!=null?v[n]:m})}).join('\n').replace(/\n{3,}/g,'\n\n').trim()}
+function xset(it,k,st,url){it.xpost=it.xpost||{};it.xpost[k]={s:st,at:new Date().toISOString()};if(url)it.xpost[k].url=url}
+function xpStatus(it,k){var x=(it.xpost||{})[k];if(x)return x.s;return (it.platforms||[]).indexOf(k)>=0||(it.links||{})[k]?'posted':''}
+function xpBadges(it){if(it.sold||!it.xpost)return '';return Object.keys(it.xpost).filter(function(k){return it.xpost[k].s==='pending'}).map(function(k){return '<span class="b xp" data-a="xpost" data-id="'+it.id+'">'+esc(pName(k))+' · pending</span>'}).join('')}
+function xpSites(it){var main=['pm','vi'];ORDER.forEach(function(k){if(main.indexOf(k)<0&&((it.platforms||[]).indexOf(k)>=0||(it.xpost||{})[k]))main.push(k)});
+ var used={};items.forEach(function(i){(i.platforms||[]).forEach(function(k){used[k]=(used[k]||0)+1})});
+ ORDER.forEach(function(k){if(main.indexOf(k)<0&&used[k]>=2&&(CREATE[k]||custom.some(function(c){return c.id===k})))main.push(k)});
+ return {main:main,more:ORDER.filter(function(k){return main.indexOf(k)<0})}}
+var xpId=null,xpFile=null;
+function xpRow(it,k){var st=xpStatus(it,k),link=((it.xpost||{})[k]||{}).url||(it.links||{})[k]||'',share=!!(navigator.canShare&&it.photo);
+ return '<div class="xps" data-k="'+esc(k)+'"><div class="hd"><span class="dot" style="width:10px;height:10px;border-radius:5px;background:'+pCol(k)+'"></span>'+esc(pName(k))+'<span class="st b '+(st==='posted'?'soldon':st==='pending'?'xp':'none')+'">'+(st==='posted'?'Posted ✓':st==='pending'?'Pending':'Not posted')+'</span></div>'+
+ '<div class="row"><button class="primary" data-x="open">'+(CREATE[k]?'Copy &amp; open '+esc(pName(k)):'Copy listing text')+'</button>'+(share?'<button data-x="share">📷 Share photo + text</button>':'')+'</div>'+
+ '<input data-x="url" type="url" inputmode="url" placeholder="Paste the new '+esc(pName(k))+' listing link" value="'+esc(link)+'">'+
+ '<div class="row"><button data-x="save">Save link</button>'+(st==='posted'?'<button data-x="unpost">Not posted</button>':'<button data-x="posted">Mark posted</button>')+'</div></div>'}
+function renderXP(){var it=find(xpId);if(!it)return;var S=xpSites(it);$('xpName').innerHTML='<b>'+esc(it.name)+'</b>'+(it.price?' · '+money(it.price):'')+(it.size?' · Size '+esc(it.size):'');
+ $('xpList').innerHTML=S.main.map(function(k){return xpRow(it,k)}).join('');$('xpMore').innerHTML=S.more.map(function(k){return xpRow(it,k)}).join('');
+ $('xpTplSite').innerHTML=S.main.concat(S.more).map(function(k){return '<option value="'+esc(k)+'">'+esc(pName(k))+'</option>'}).join('');xpTplShow()}
+function xpTplShow(){$('xpTpl').value=xpTpl($('xpTplSite').value)}
+$('xpTplSite').onchange=xpTplShow;
+$('xpTpl').oninput=function(){var t=xpTpls();t[$('xpTplSite').value]=this.value;try{localStorage.setItem(XTKEY,JSON.stringify(t))}catch(e){}};
+$('xpTplReset').onclick=function(){var t=xpTpls();delete t[$('xpTplSite').value];localStorage.setItem(XTKEY,JSON.stringify(t));xpTplShow()};
+function xpPrepFile(it){xpFile=null;if(!it.photo||!navigator.canShare)return;var id=it.id;
+ fetch(it.photo).then(function(r){return r.blob()}).then(function(b){var f=new File([b],'closet-'+id+'.jpg',{type:b.type||'image/jpeg'});if(xpId===id&&navigator.canShare({files:[f]}))xpFile=f}).catch(function(){})}
+function openXP(it){if(!it)return;xpId=it.id;$('toast').classList.remove('show');renderXP();xpPrepFile(it);$('mXP').classList.add('show')}
+$('xpDone').onclick=function(){$('mXP').classList.remove('show');render()};
+function xpClick(e){var b=e.target,x=b.getAttribute('data-x');if(!x||b.tagName==='INPUT')return;var box=b.closest('.xps'),k=box&&box.getAttribute('data-k'),it=find(xpId);if(!k||!it)return;
+ if(x==='open'){var t=xpText(it,k);copyText(t);if(CREATE[k])window.open(CREATE[k],'_blank','noopener');if(xpStatus(it,k)!=='posted')xset(it,k,'pending');save();renderXP();toast('Copied the '+esc(pName(k))+' listing text. Paste it into the new listing'+(CREATE[k]?' that just opened':'')+', add photos, post, then paste the link here.')}
+ if(x==='share'){var t2=xpText(it,k),d={title:xpTitle(it,k),text:t2};if(xpFile)d.files=[xpFile];copyText(t2);
+  navigator.share(d).then(function(){if(xpStatus(it,k)!=='posted'){xset(it,k,'pending');save();renderXP()}}).catch(function(){});if(!xpFile)toast('Photo could not be attached on this device, so only the text was shared (it is also copied).')}
+ if(x==='save'){var u=(box.querySelector('input').value.match(/https?:\/\/\S+/i)||[''])[0];if(!u){toast('Paste the new listing link first.');return}
+  var dk=detectPlat(u);if(dk&&dk!==k&&!confirm('That looks like a '+pName(dk)+' link, not '+pName(k)+'. Save it anyway?'))return;
+  it.links=it.links||{};it.links[k]=u;if(!it.url)it.url=u;if((it.platforms||[]).indexOf(k)<0)(it.platforms=it.platforms||[]).push(k);xset(it,k,'posted',u);save();renderXP();renderNew();toast('Saved the '+esc(pName(k))+' link. Marked posted ✓')}
+ if(x==='posted'){if((it.platforms||[]).indexOf(k)<0)(it.platforms=it.platforms||[]).push(k);xset(it,k,'posted');save();renderXP()}
+ if(x==='unpost'){it.platforms=(it.platforms||[]).filter(function(p){return p!==k});if(it.xpost)delete it.xpost[k];save();renderXP()}}
+$('xpList').onclick=xpClick;$('xpMore').onclick=xpClick;
+// ---- v1.10: automatic pick-up of new Poshmark listings ----
+var SKEY='chantel_closet_posh_seen';
+function poshSeen(){try{return JSON.parse(localStorage.getItem(SKEY))}catch(e){return null}}
+function dismissItem(it){var d=dismissed(),n=0;[it.url,(it.links||{}).pm].forEach(function(u){var x=detectPlat(u)==='pm'&&lid(u);if(x){d[x]=1;n++}});if(n)localStorage.setItem(DKEY,JSON.stringify(d))}
+function restoreExtras(d){if(d.dismissedPosh&&typeof d.dismissedPosh==='object'){var m=dismissed();Object.keys(d.dismissedPosh).forEach(function(k){m[k]=1});localStorage.setItem(DKEY,JSON.stringify(m))}
+ if(Array.isArray(d.poshSeen)){var s=poshSeen()||[];localStorage.setItem(SKEY,JSON.stringify(Array.from(new Set(s.concat(d.poshSeen))).slice(-5000)))}
+ if(d.xpTemplates&&typeof d.xpTemplates==='object')localStorage.setItem(XTKEY,JSON.stringify(d.xpTemplates))}
+function normT(t){return String(t||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+function autoPick(f){var av=(f&&f.available)||[];if(!av.length)return;var seen=poshSeen(),ids=av.map(function(a){return lid(a.url)}).filter(Boolean);
+ if(!Array.isArray(seen)){localStorage.setItem(SKEY,JSON.stringify(ids));return} // first run: baseline only (older listings stay in the "New on Poshmark" panel)
+ var sm={};seen.forEach(function(x){sm[x]=1});var map=itemIds(),dm=dismissed(),added=[],linked=[];
+ av.forEach(function(a){var x=lid(a.url);if(!x||sm[x])return;sm[x]=1;if(map[x]||dm[x])return;
+  var t=normT(a.title),m=t&&items.filter(function(i){return !i.sold&&normT(i.name)===t&&!(i.links||{}).pm})[0];
+  if(m){m.links=m.links||{};m.links.pm=a.url;if(!m.url)m.url=a.url;if(m.platforms.indexOf('pm')<0)m.platforms.push('pm');xset(m,'pm','posted',a.url);linked.push(m);map[x]=m;return}
+  var it=feedToItem(a,added.length);it.qty=1;it.autoNew=true;items.unshift(it);map[x]=it;added.push(it)});
+ localStorage.setItem(SKEY,JSON.stringify(Object.keys(sm).slice(-5000)));
+ if(!added.length&&!linked.length)return;save();render();renderNew();
+ var ids2=added.map(function(i){return i.id}),lk=linked.map(function(i){return i.id});
+ toast('<b>New from Poshmark:</b> '+added.map(function(i){return esc(i.name)}).slice(0,4).join(', ')+(added.length>4?'…':'')+(linked.length?(added.length?'<br>':'')+'Linked '+linked.length+' existing item'+(linked.length===1?'':'s')+' to Poshmark.':''),function(){
+  items.filter(function(i){return ids2.indexOf(i.id)>=0}).forEach(dismissItem);items=items.filter(function(i){return ids2.indexOf(i.id)<0});
+  lk.forEach(function(id){var i=find(id);if(!i)return;var u=i.links.pm;delete i.links.pm;if(i.url===u)i.url='';i.platforms=i.platforms.filter(function(p){return p!=='pm'});if(i.xpost)delete i.xpost.pm});save();render();renderNew()})}
+function pickTick(){if(document.hidden)return;loadFeed().then(function(f){feed=f;autoPick(f);renderNew()}).catch(function(){})}
+setInterval(pickTick,3*60*1000);document.addEventListener('visibilitychange',function(){if(!document.hidden)setTimeout(pickTick,2500)});
+// ---- v1.10: share a listing into the app (Android share sheet / PWA share target / APK) ----
+var lastShare='';
+function onShare(title,text,url){var all=[title,text,url].filter(Boolean).join(' ');if(!all.trim()||all===lastShare)return;lastShare=all;
+ var u=url||(all.match(/https?:\/\/\S+/i)||[''])[0],t=String(title||'').trim()||String(text||'').replace(u,'').replace(/^.*?(sharing from poshmark|on vinted|from vinted)[:!]?\s*/i,'').trim();
+ if(t&&/^(check out|look at)/i.test(t))t=t.replace(/^.*?:\s*/,'');tab('Stock');
+ var ex=u&&items.filter(function(i){return i.url===u||Object.keys(i.links||{}).some(function(k){return i.links[k]===u})})[0];if(ex){toast('That listing is already in your closet: <b>'+esc(ex.name)+'</b>');return}
+ openEdit(null);if(u){$('fUrl').value=u;onUrl()}if(t&&!$('fName').value.trim())$('fName').value=t.slice(0,120);
+ $('fUrlMsg').textContent=($('fUrlMsg').textContent?$('fUrlMsg').textContent+' · ':'')+'Shared into the app. Check the details and Save.'}
+window.__closetShare=function(sub,txt){onShare(sub,txt,'')};
+(function(){try{var q=new URLSearchParams(location.search);if(q.has('share')||q.has('text')||q.has('url')||q.has('title')){var a=q.get('title')||'',b=q.get('text')||'',c=q.get('url')||'';history.replaceState(null,'',location.pathname);setTimeout(function(){onShare(a,b,c)},600)}}catch(e){}})();
+
 // daily reminder
 var RKEY='chantel_closet_remind_day';
 function remind(force){var P2=items.filter(function(i){return pendingDelist(i).length});if(!P2.length){$('remind').innerHTML='';return}
@@ -560,6 +654,12 @@ $('alertBtn').onclick=function(){localStorage.setItem('chantel_closet_alert_aske
 //     sel  = CSS selectors tried in order; first VISIBLE match is spotlighted (no match = centered card, step still shows)
 //  3) The tour plays the entry for APP_VERSION automatically; nothing else to wire up.
 var RELEASE_NOTES={
+ '1.10.0':[
+  {tab:'Stock',sel:['[data-a="xpost"]','#list'],title:'Post to my sites 📤',text:'Tap "📤 Post" on any item (or "Save & post" when adding one). Pick Poshmark, Vinted or another site: the listing text is copied for you and the site\'s new-listing page opens. Paste, add photos, post, then paste the new link back. Each site shows pending or posted.'},
+  {tab:'Stock',sel:['[data-a="xpost"]','#list'],title:'Photos straight to the app 📷',text:'On your phone, "Share photo + text" sends the item photo and description to the Poshmark or Vinted app in one go.'},
+  {tab:'Stock',sel:['#newPanel','#syncBtn'],title:'New Poshmark listings add themselves ✨',text:'When you list something new on Poshmark, it shows up here by itself (within about 10 minutes) with a pink "New from Poshmark" badge. Tap Undo if you don\'t want it. Items you delete never come back.'},
+  {tab:'Stock',sel:['#add'],title:'Share into the app 🔗',text:'In the Poshmark or Vinted app, tap Share on a listing and pick Shantell\'s Closet. The add form opens with the link and title filled in.'}
+ ],
  '1.9.0':[
   {tab:'Stock',sel:['#viPanel'],title:'Vinted quick-add 🛍️',text:'Tap "Vinted" to open your Vinted closet, or paste a Vinted item link with its title, price and quantity to add it here, already marked as listed on Vinted.'}
  ],
@@ -604,9 +704,9 @@ $('tourBtn').onclick=function(){tourStart()};$('ver').onclick=function(){tourSta
 addEventListener('resize',function(){if($('tour').classList.contains('show'))tourShow()});
 if(localStorage.getItem(TKEY)!==APP_VERSION&&RELEASE_NOTES[APP_VERSION])setTimeout(function(){if(localStorage.getItem(TKEY)!==APP_VERSION)tourStart()},1500);
 render();remind();syncSales(false);
-window.__closet={detectPlat:detectPlat,titleFromUrl:titleFromUrl,showUpd:showUpd,syncSales:syncSales,lid:lid,tourStart:tourStart};
+window.__closet={autoPick:autoPick,openXP:openXP,xpText:xpText,onShare:onShare,detectPlat:detectPlat,titleFromUrl:titleFromUrl,showUpd:showUpd,syncSales:syncSales,lid:lid,tourStart:tourStart};
 
 })();
 </script>
-<script src="./notify.js?v=1.9.0"></script>
+<script src="./notify.js?v=1.10.0"></script>
 </body></html>

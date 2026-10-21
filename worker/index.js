@@ -52,7 +52,7 @@ async function step(env, force) {
   const meta = (await env.FEED.get("meta", "json")) || {};
   if (!st) {
     const age = meta.last_ok ? (Date.now() - Date.parse(meta.last_ok)) / 60000 : 1e9;
-    if (!force && age < REFRESH_MIN) return { idle: true, last_ok: meta.last_ok };
+    if (!force && age < REFRESH_MIN) return (quickDue() ? await quick(env) : { idle: true, last_ok: meta.last_ok });
     if (!force && meta.backoff_until && Date.now() < Date.parse(meta.backoff_until)) return { idle: true, backoff_until: meta.backoff_until };
     st = { started: new Date().toISOString(), phase: "available", mx: null, pages: 0, A: [], S: [] };
   }
@@ -75,6 +75,22 @@ async function step(env, force) {
   }
   await env.FEED.put("crawl", JSON.stringify(st));
   return out;
+}
+
+// v1.10: between full crawls, peek at the first page of available listings every 10 min so new listings reach the app fast.
+// No KV write unless something new is found (free-plan KV write budget).
+const QUICK_EVERY_MIN = 10;
+function quickDue() { return new Date().getUTCMinutes() % QUICK_EVERY_MIN === 0; }
+async function quick(env) {
+  const raw = await env.FEED.get("feed"); if (!raw) return { idle: true };
+  const feed = JSON.parse(raw), have = new Set((feed.available || []).map(x => x.url)), sold = new Set((feed.sold || []).map(x => x.url));
+  let L; try { L = await getPage(`${CLOSET}?availability=available`); } catch (e) { return { quick: true, error: String(e).slice(0, 200) }; }
+  const nw = (L.data || []).map(slimA).filter(x => !have.has(x.url) && !sold.has(x.url)).map(({ id, ...r }) => r);
+  if (!nw.length) return { quick: true, new: 0 };
+  feed.available = nw.concat(feed.available || []); feed.counts = { ...(feed.counts || {}), available: feed.available.length };
+  feed.generated_at = new Date().toISOString().replace(/\.\d+Z$/, "+00:00"); feed.quick_added = nw.length;
+  await env.FEED.put("feed", JSON.stringify(feed));
+  return { quick: true, new: nw.length };
 }
 
 async function finish(env, st, meta) {
@@ -110,7 +126,7 @@ export default {
     }
     if (u.pathname === "/new_sales.json") return new Response((await env.FEED.get("new_sales")) || "[]", { headers: cors(req, { "Content-Type": "application/json", "Cache-Control": "no-store" }) });
     if (u.pathname === "/status") { const m = (await env.FEED.get("meta", "json")) || {}; const c = await env.FEED.get("crawl", "json");
-      return new Response(JSON.stringify({ ...m, crawl_in_progress: c ? { phase: c.phase, pages: c.pages, available: c.A.length, sold: c.S.length } : null, schedule: "cron */2 * * * *; full refresh starts when the feed is 55+ min old (about hourly)" }, null, 1), { headers: cors(req, { "Content-Type": "application/json", "Cache-Control": "no-store" }) }); }
+      return new Response(JSON.stringify({ ...m, crawl_in_progress: c ? { phase: c.phase, pages: c.pages, available: c.A.length, sold: c.S.length } : null, schedule: "cron */2 * * * *; full refresh starts when the feed is 55+ min old (about hourly); quick new-listing check of page 1 every 10 min" }, null, 1), { headers: cors(req, { "Content-Type": "application/json", "Cache-Control": "no-store" }) }); }
     if (u.pathname === "/run" && req.method === "POST") {   // manual trigger, needs the RUN_TOKEN secret
       if (!env.RUN_TOKEN || req.headers.get("Authorization") !== "Bearer " + env.RUN_TOKEN) return new Response("forbidden", { status: 403 });
       return new Response(JSON.stringify(await step(env, u.searchParams.get("force") === "1")), { headers: { "Content-Type": "application/json" } });

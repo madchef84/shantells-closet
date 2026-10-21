@@ -1,7 +1,7 @@
-# Shantell's Closet v1.9.0: install files
+# Shantell's Closet v1.10.0: install files
 
-Android APK (self-signed), Windows installer (NSIS, unsigned) and unsigned iOS IPA for v1.9.0. The live link https://shantells-closet.surge.sh is unchanged.
+Android APK (self-signed), Windows installer (NSIS, unsigned) and unsigned iOS IPA for v1.10.0. The live link https://shantells-closet.surge.sh is unchanged.
 
-New since 1.6: quantity on hand per item, automatic quantity decrement when Poshmark reports a sale (never double-counted, item moves to Sold at 0), quantity in Edit and CSV import/export, and Vinted closet link + Vinted quick-add.
+New in 1.10: "📤 Post to my sites" crosslist helper (copies a per-site listing text and opens the Poshmark / Vinted / other create-listing page, share photo + text to the apps on phones, pending/posted status per site, paste the new listing link back), editable per-site templates, automatic pick-up of new Poshmark listings (with Undo; deleted items never come back), and "Share to Shantell's Closet" from the Poshmark/Vinted apps on Android.
 
 Live web app (always up to date): https://shantells-closet.surge.sh

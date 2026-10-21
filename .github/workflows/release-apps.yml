@@ -23,6 +23,13 @@ jobs:
           npm install --no-audit --no-fund
           npx cap add android
           npx cap sync android
+      - name: Android share target (receive links shared from Poshmark/Vinted apps)
+        working-directory: packaging/mobile/android
+        run: |
+          cp ../native/MainActivity.java app/src/main/java/com/madchefgo/shantellscloset/MainActivity.java
+          M=app/src/main/AndroidManifest.xml
+          perl -0pi -e 's#(<category android:name="android.intent.category.LAUNCHER" />\s*</intent-filter>)#$1\n            <intent-filter>\n                <action android:name="android.intent.action.SEND" />\n                <category android:name="android.intent.category.DEFAULT" />\n                <data android:mimeType="text/plain" />\n            </intent-filter>#' $M
+          grep -q "android.intent.action.SEND" $M && grep -n "intent" $M
       - name: Build release APK
         working-directory: packaging/mobile/android
         run: |
