@@ -108,8 +108,27 @@ label{display:block;font-size:13px;font-weight:600;letter-spacing:.02em;color:va
 .tour .tc h3{margin:4px 0 4px;font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:21px;font-weight:600}
 .tour .tc p{margin:0 0 12px;font-size:15px;line-height:1.35;color:#f1e8fa}
 .tour .tc .row button{min-height:42px}.tour .tc #tNext{background:var(--gold2);color:var(--plum);border:0}.tour .tc #tSkip{background:transparent;color:#eadcf7;border-color:rgba(255,255,255,.3)}
+
+/* v1.6.0 opening: silk folds + 3D hanger carousel (decorative, CSS only) */
+.h3d{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+header>*:not(.h3d){position:relative;z-index:1}
+.silk{position:absolute;left:-30%;width:160%;height:70%;border-radius:50%;filter:blur(18px);opacity:.55;mix-blend-mode:screen}
+.silk.a{top:-25%;background:linear-gradient(100deg,transparent 20%,rgba(243,223,174,.55) 45%,rgba(230,161,198,.4) 55%,transparent 80%);animation:silk 11s ease-in-out infinite alternate}
+.silk.b{bottom:-35%;background:linear-gradient(80deg,transparent 25%,rgba(155,95,208,.7) 50%,rgba(255,255,255,.25) 58%,transparent 80%);animation:silk 14s ease-in-out infinite alternate-reverse}
+@keyframes silk{0%{transform:translateX(-12%) rotate(-6deg) scaleY(.8)}100%{transform:translateX(12%) rotate(5deg) scaleY(1.15)}}
+.rack{position:absolute;right:130px;top:50%;width:150px;height:96px;margin-top:-44px;perspective:520px}
+.rack:before{content:"";position:absolute;left:-6px;right:-6px;top:4px;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,var(--gold2),var(--gold),var(--gold2),transparent);box-shadow:0 0 10px rgba(243,223,174,.6)}
+.car{position:absolute;left:50%;top:5px;width:0;height:0;transform-style:preserve-3d;animation:carSpin 22s linear infinite}
+.hg{position:absolute;left:-20px;top:0;width:40px;height:84px;transform:rotateY(calc(var(--i)*60deg)) translateZ(62px);backface-visibility:visible}
+.hg i{position:absolute;left:14px;top:0;width:12px;height:12px;border:2px solid var(--gold2);border-bottom:0;border-radius:8px 8px 0 0}
+.hg b{position:absolute;left:0;top:10px;width:40px;height:72px;background:var(--c);clip-path:polygon(25% 0,75% 0,100% 18%,88% 30%,82% 100%,18% 100%,12% 30%,0 18%);box-shadow:inset 0 0 12px rgba(0,0,0,.2)}
+.hg b:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);background-size:250% 100%;animation:shim 4s ease-in-out infinite}
+@keyframes carSpin{to{transform:rotateY(360deg)}}
+@keyframes shim{0%{background-position:150% 0}100%{background-position:-50% 0}}
+@media (max-width:560px){.rack{transform:scale(.62);transform-origin:right center;right:92px;opacity:.8}}
+@media (prefers-reduced-motion:reduce){.silk,.car,.hg b:after{animation:none!important}.car{transform:rotateY(20deg)}}
 </style></head><body>
-<header><div class="kick">✦ Resale boutique</div><h1>Shantell's Closet<span class="ver" id="ver">v1.5.0</span></h1></header>
+<header><div class="h3d" aria-hidden="true"><span class="silk a"></span><span class="silk b"></span><div class="rack"><div class="car"><span class="hg" style="--i:0;--c:#e6a1c6"><i></i><b></b></span><span class="hg" style="--i:1;--c:#f3dfae"><i></i><b></b></span><span class="hg" style="--i:2;--c:#9b5fd0"><i></i><b></b></span><span class="hg" style="--i:3;--c:#fff"><i></i><b></b></span><span class="hg" style="--i:4;--c:#c99a3e"><i></i><b></b></span><span class="hg" style="--i:5;--c:#5a2275"><i></i><b></b></span></div></div></div><div class="kick">✦ Resale boutique</div><h1>Shantell's Closet<span class="ver" id="ver">v1.6.0</span></h1></header>
 <button class="upd" id="updBar">A new version is ready. Tap to update</button>
 <div class="tabs"><button id="tStock" class="on">In Stock</button><button id="tSold">Sold</button><button id="tBuyers">Buyers</button><button id="tMore">Backup</button></div>
 <div class="wrap">
@@ -142,7 +161,7 @@ label{display:block;font-size:13px;font-weight:600;letter-spacing:.02em;color:va
   <p><button id="tplDl" style="width:100%">Download blank CSV template</button></p>
   <p><button class="primary" id="tourBtn" style="width:100%">✨ What's new</button></p>
   <p><button id="updChk" style="width:100%">Check for updates</button></p>
-  <p class="meta" id="updMsg">App version v1.5.0</p>
+  <p class="meta" id="updMsg">App version v1.6.0</p>
   <p class="meta">Everything is saved only on this device. Make a backup now and then.</p>
  </section>
 </div>
@@ -376,7 +395,7 @@ $('iOk').onclick=function(){var res=buildItems(false).filter(function(x){return 
  save();$('mImp').classList.remove('show');render();tab('Stock');toast('Imported '+res.length+' item'+(res.length===1?'':'s')+'.',function(){items=before;save();render()})};
 $('tplDl').onclick=function(){dl('shantells_closet_template.csv','Title,Brand,Size,Price,Cost,Platform,URL,Status,Category,Color,Condition,Notes\nExample: Floral Wrap Dress,Free People,M,38,12,Poshmark; Mercari,https://poshmark.com/listing/Floral-Wrap-Dress-123abc,In stock,Dresses,Pink,Like new,Delete this example row\n','text/csv')};
 // ---- updates ----
-var APP_VERSION='1.5.0',swReg=null,reloading=false;
+var APP_VERSION='1.6.0',swReg=null,reloading=false;
 function showUpd(){$('updBar').classList.add('show');$('updMsg').textContent='App version v'+APP_VERSION+' — a new version is ready.'}
 function watch(reg){if(reg.waiting&&navigator.serviceWorker.controller)showUpd();
  reg.addEventListener('updatefound',function(){var nw=reg.installing;if(!nw)return;nw.addEventListener('statechange',function(){if(nw.state==='installed'&&navigator.serviceWorker.controller)showUpd()})})}
@@ -513,6 +532,9 @@ $('alertBtn').onclick=function(){localStorage.setItem('chantel_closet_alert_aske
 //     sel  = CSS selectors tried in order; first VISIBLE match is spotlighted (no match = centered card, step still shows)
 //  3) The tour plays the entry for APP_VERSION automatically; nothing else to wire up.
 var RELEASE_NOTES={
+ '1.6.0':[
+  {sel:['header'],title:'A fresh new look ✨',text:'The top of your app now has a little boutique: silk shimmer and a spinning clothing rack. Everything else works just like before.'}
+ ],
  '1.5.0':[
   {tab:'Stock',sel:['#syncBtn','#chips'],title:'Listings refresh automatically ✨',text:'Your Poshmark listings and sales now update on their own about every hour, even when Dave\'s computer is off. Just open the app and they\'re up to date.'}
  ],
@@ -552,5 +574,5 @@ window.__closet={detectPlat:detectPlat,titleFromUrl:titleFromUrl,showUpd:showUpd
 
 })();
 </script>
-<script src="./notify.js?v=1.5.0"></script>
+<script src="./notify.js?v=1.6.0"></script>
 </body></html>
