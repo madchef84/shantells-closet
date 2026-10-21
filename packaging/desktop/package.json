@@ -1,7 +1,7 @@
 {
   "name": "shantells-closet",
   "productName": "Shantell's Closet",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Shantell's Closet offline app",
   "author": "MadchefGo",
   "main": "main.js",
