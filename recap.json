@@ -1,23 +1,48 @@
 {
  "period": {
-  "start": "2026-10-10",
-  "end": "2026-10-17"
+  "start": "2026-10-14",
+  "end": "2026-10-21"
  },
- "feed_generated_at": "2026-10-17T19:36:05+00:00",
+ "feed_generated_at": "2026-10-21T09:32:47+00:00",
  "counts": {
-  "sold": 0,
-  "new_listings": 5,
-  "available": 550,
-  "stale_total": 110
+  "sold": 1,
+  "new_listings": 7,
+  "available": 555,
+  "stale_total": 111
  },
- "sold_total": 0,
- "sold": [],
+ "sold_total": 15.0,
+ "sold": [
+  {
+   "title": "New! Animal Print Peep Toe",
+   "price": 15.0,
+   "date": "2026-10-20",
+   "url": "https://poshmark.com/listing/6ad72da0d7f249e349a0b505"
+  }
+ ],
  "new_listings": [
   {
-   "title": "New! Ladies Fashion Earrings",
-   "price": 15.0,
-   "date": "2026-10-15",
-   "url": "https://poshmark.com/listing/6ad1383a571a7e4714620ab4"
+   "title": "Boys Thermal Set",
+   "price": 8.0,
+   "date": "2026-10-20",
+   "url": "https://poshmark.com/listing/6ad84c0b32f9343bcd40560e"
+  },
+  {
+   "title": "Ladies Mini Dress",
+   "price": 25.0,
+   "date": "2026-10-20",
+   "url": "https://poshmark.com/listing/6ad7e5d2b9dd702a7e0567a2"
+  },
+  {
+   "title": "Boys Adidas Jacket",
+   "price": 13.0,
+   "date": "2026-10-20",
+   "url": "https://poshmark.com/listing/6ad7b06731f0f62ee3cd7f16"
+  },
+  {
+   "title": "Boys Adidas Jacket",
+   "price": 9.0,
+   "date": "2026-10-20",
+   "url": "https://poshmark.com/listing/6ad7aa55b9dd70e3e3027ed7"
   },
   {
    "title": "New! Ladies Fashion Earrings",
@@ -26,92 +51,86 @@
    "url": "https://poshmark.com/listing/6ad03579ad242af930f568ad"
   },
   {
-   "title": "Boys Top Bundle",
-   "price": 8.0,
-   "date": "2026-10-10",
-   "url": "https://poshmark.com/listing/6aca4f83e912b30bf205f1fd"
+   "title": "Ladies Two Piece Outfit",
+   "price": 20.0,
+   "date": "2026-10-19",
+   "url": "https://poshmark.com/listing/6ad620939c93e0f5f84d3e52"
   },
   {
-   "title": "Boys Basketball Shoes",
-   "price": 60.0,
-   "date": "2026-10-10",
-   "url": "https://poshmark.com/listing/6acadbd724cc871e3e7b7630"
-  },
-  {
-   "title": "Toddler Jeans Bundle",
-   "price": 8.0,
-   "date": "2026-10-13",
-   "url": "https://poshmark.com/listing/6acf0300a1bf20b6b2e1ec34"
+   "title": "New! Ladies Fashion Earrings",
+   "price": 15.0,
+   "date": "2026-10-15",
+   "url": "https://poshmark.com/listing/6ad1383a571a7e4714620ab4"
   }
  ],
  "top_stale": [
   {
    "title": "Floral Print Skirt",
    "price": 7.0,
-   "days_listed": 3424,
+   "days_listed": 3428,
    "likes": 0,
    "url": "https://poshmark.com/listing/5931e4c84e8d1770960012a1"
   },
   {
    "title": "Special Occasion Gown",
    "price": 150.0,
-   "days_listed": 3049,
+   "days_listed": 3053,
    "likes": 0,
    "url": "https://poshmark.com/listing/5b1fe840baebf649acf3e705"
   },
   {
    "title": "New! Animal Print Earrings",
    "price": 8.0,
-   "days_listed": 1975,
+   "days_listed": 1979,
    "likes": 0,
    "url": "https://poshmark.com/listing/60a8011a3cda88b056d36034"
   },
   {
    "title": "Lace Top",
    "price": 8.0,
-   "days_listed": 1924,
+   "days_listed": 1928,
    "likes": 0,
    "url": "https://poshmark.com/listing/60eb89e34fd23a7c129b25d3"
   },
   {
    "title": "New! Women’s Top",
    "price": 6.0,
-   "days_listed": 1873,
+   "days_listed": 1877,
    "likes": 0,
    "url": "https://poshmark.com/listing/612e862d67bd9198ddcc84bc"
   },
   {
    "title": "New! Women’s Top",
    "price": 25.0,
-   "days_listed": 1870,
+   "days_listed": 1874,
    "likes": 0,
    "url": "https://poshmark.com/listing/6132cec47f80d295e4a7f263"
   },
   {
    "title": "New! Pet Birthday Bandana",
    "price": 13.0,
-   "days_listed": 1848,
+   "days_listed": 1852,
    "likes": 0,
    "url": "https://poshmark.com/listing/614fb11fffba94f9277bbb57"
   },
   {
    "title": "New! Animal Print Earrings",
    "price": 8.0,
-   "days_listed": 1749,
+   "days_listed": 1753,
    "likes": 0,
    "url": "https://poshmark.com/listing/61d27a3c074d24d168c894db"
   },
   {
    "title": "New! Kids Fashion Sneakers",
    "price": 13.0,
-   "days_listed": 1745,
+   "days_listed": 1749,
    "likes": 0,
    "url": "https://poshmark.com/listing/61d7dd7b93649f6c3ecf2c9d"
   },
   {
    "title": "Ladies Top",
    "price": 8.0,
-   "days_listed": 1454,
+   "days_listed": 1458,
    "likes": 0,
    "url": "https://poshmark.com/listing/63573b16bd0629358c824241"
   }
