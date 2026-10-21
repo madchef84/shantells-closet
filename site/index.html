@@ -473,7 +473,7 @@ $('newPanel').onclick=function(e){var t=e.target,L=newItems();
  var u=t.getAttribute('data-u'),k=t.getAttribute('data-n');if(!u)return;var a=L.filter(function(x){return x.url===u})[0];if(!a)return;
  if(k==='add'){items.unshift(feedToItem(a));save();render()}else{var d=dismissed();d[lid(u)]=1;localStorage.setItem(DKEY,JSON.stringify(d))}renderNew()};
 // ---- v1.9: Vinted quick-add (manual paste only; the app never reads Vinted automatically) ----
-$('viUrl').addEventListener('change',function(){var u=(this.value.match(/https?:\/\/\S+/i)||[''])[0];if(u)this.value=u;var t=titleFromUrl(u);if(t&&!$('viTitle').value.trim())$('viTitle').value=t});
+$('viUrl').addEventListener('change',function(){var u=(this.value.match(/https?:\/\/\S+/i)||[''])[0];if(u)this.value=u;var t=titleFromUrl(u).replace(/^\d{5,}\s+/,'');if(t&&!$('viTitle').value.trim())$('viTitle').value=t});
 $('viAdd').onclick=function(){var u=($('viUrl').value.match(/https?:\/\/\S+/i)||[''])[0],t=$('viTitle').value.trim(),m=$('viMsg');
  if(!u||detectPlat(u)!=='vi'){m.textContent='Paste a Vinted item link (vinted.com/items/…).';return}
  if(!t){m.textContent='Add a title.';$('viTitle').focus();return}
