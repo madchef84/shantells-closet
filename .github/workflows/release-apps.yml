@@ -1,0 +1,109 @@
+name: Build install files (APK, Windows, iOS)
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 17 }
+      - name: Capacitor Android project
+        working-directory: packaging/mobile
+        run: |
+          rm -rf www && cp -r ../../site www && rm -f www/CNAME
+          npm install --no-audit --no-fund
+          npx cap add android
+          npx cap sync android
+      - name: Build release APK
+        working-directory: packaging/mobile/android
+        run: |
+          sed -i -E 's/versionName "[^"]*"/versionName "1.5.0"/; s/versionCode [0-9]+/versionCode 150/' app/build.gradle
+          chmod +x gradlew && ./gradlew assembleRelease --no-daemon
+      - name: Sign APK
+        env:
+          KS_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          KS_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          echo "$KS_B64" | base64 -d > $RUNNER_TEMP/ks.p12
+          BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1)
+          IN=packaging/mobile/android/app/build/outputs/apk/release/app-release-unsigned.apk
+          $BT/zipalign -p -f 4 $IN $RUNNER_TEMP/aligned.apk
+          mkdir -p out
+          $BT/apksigner sign --ks $RUNNER_TEMP/ks.p12 --ks-type PKCS12 --ks-key-alias "$KS_ALIAS" --ks-pass env:KS_PASS --key-pass env:KS_PASS --out out/Shantells-Closet-1.5.0.apk $RUNNER_TEMP/aligned.apk
+          $BT/apksigner verify out/Shantells-Closet-1.5.0.apk
+          rm -f $RUNNER_TEMP/ks.p12
+      - uses: actions/upload-artifact@v4
+        with: { name: apk, path: out/*.apk }
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Build NSIS installer
+        working-directory: packaging/desktop
+        shell: bash
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+        run: |
+          rm -rf site && cp -r ../../site site && rm -f site/CNAME
+          npm install --no-audit --no-fund
+          npx electron-builder --win nsis --x64 --publish never
+      - uses: actions/upload-artifact@v4
+        with: { name: windows, path: packaging/desktop/dist/*.exe }
+
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Capacitor iOS project
+        working-directory: packaging/mobile
+        run: |
+          rm -rf www && cp -r ../../site www && rm -f www/CNAME
+          npm install --no-audit --no-fund
+          npx cap add ios
+          npx cap sync ios
+      - name: Build unsigned app
+        working-directory: packaging/mobile/ios/App
+        run: |
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos \
+            -derivedDataPath build MARKETING_VERSION=1.5.0 CURRENT_PROJECT_VERSION=150 \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+      - name: Package IPA
+        run: |
+          mkdir -p ipa/Payload out
+          cp -R packaging/mobile/ios/App/build/Build/Products/Release-iphoneos/App.app ipa/Payload/
+          (cd ipa && zip -qry ../out/Shantells-Closet-1.5.0-unsigned.ipa Payload)
+      - uses: actions/upload-artifact@v4
+        with: { name: ipa, path: out/*.ipa }
+
+  release:
+    needs: [android, windows, ios]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { path: art, merge-multiple: true }
+      - name: Create or update release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"; [[ "$TAG" == v* ]] || TAG=v1.5.0
+          ls -la art
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" art/* --clobber
+            gh release edit "$TAG" --notes-file packaging/RELEASE_NOTES.md
+          else
+            gh release create "$TAG" art/* --title "Shantell's Closet $TAG" --notes-file packaging/RELEASE_NOTES.md
+          fi

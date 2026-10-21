@@ -1,0 +1,18 @@
+{
+  "name": "shantells-closet",
+  "productName": "Shantell's Closet",
+  "version": "1.5.0",
+  "description": "Shantell's Closet offline app",
+  "author": "MadchefGo",
+  "main": "main.js",
+  "private": true,
+  "devDependencies": { "electron": "^31.7.7", "electron-builder": "^24.13.3" },
+  "build": {
+    "appId": "com.madchefgo.shantellscloset",
+    "productName": "Shantell's Closet",
+    "files": ["main.js", "site/**/*"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "artifactName": "Shantells-Closet-Setup-${version}.exe" },
+    "publish": null
+  }
+}

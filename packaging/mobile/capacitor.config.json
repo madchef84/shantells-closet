@@ -1,0 +1,7 @@
+{
+  "appId": "com.madchefgo.shantellscloset",
+  "appName": "Shantell's Closet",
+  "webDir": "www",
+  "backgroundColor": "#3b1450",
+  "android": { "allowMixedContent": false }
+}

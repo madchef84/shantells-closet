@@ -1,0 +1,10 @@
+mobile/www/
+mobile/android/
+mobile/ios/
+mobile/node_modules/
+desktop/site/
+desktop/dist/
+desktop/node_modules/
+*.p12
+*.jks
+*.keystore
