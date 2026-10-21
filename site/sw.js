@@ -1,4 +1,4 @@
-const VERSION='1.7.0';const C='shantells-closet-v10';const A=['./','./index.html','./apple-touch-icon.png','./manifest.webmanifest','./notify.js'];
+const VERSION='1.8.0';const C='shantells-closet-v11';const A=['./','./index.html','./apple-touch-icon.png','./manifest.webmanifest','./notify.js'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(C).then(c=>c.addAll(A.map(u=>new Request(u,{cache:'reload'})))))});
 self.addEventListener('message',e=>{if(e.data==='SKIP_WAITING')self.skipWaiting();if(e.data==='VERSION'&&e.source)e.source.postMessage({version:VERSION})});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
