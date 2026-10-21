@@ -441,6 +441,7 @@ function syncSales(manual){$('syncMsg').textContent=manual?'Checking Poshmark…
   (f.sold||[]).forEach(function(s){var sid=lid(s.url),it=map[sid];if(!it)return;
    // v1.7: quantity decrement, idempotent per Poshmark sale (listing id), never below 0
    var d=s.sold_date_if_available?new Date(s.sold_date_if_available+'T12:00:00'):new Date();
+   if(sid&&!ap[sid]&&(it.sales||[]).some(function(x){return x.sale===sid}))ap[sid]={item:it.id,restored:true};
    if(sid&&!ap[sid]){ap[sid]={item:it.id,date:d.toISOString(),price:String(s.sold_price_if_available||s.price||it.price||'0'),applied:new Date().toISOString()};apN++;
     if(!it.sold){it.qty=Math.max(0,qtyOf(it)-1);(it.sales=it.sales||[]).push({src:'poshmark',sale:sid,date:d.toISOString(),price:ap[sid].price})}else it.qty=0}
    if(it.sold||qtyOf(it)>0)return;
