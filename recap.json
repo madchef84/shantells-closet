@@ -1,14 +1,14 @@
 {
  "period": {
-  "start": "2026-10-14",
-  "end": "2026-10-21"
+  "start": "2026-10-19",
+  "end": "2026-10-26"
  },
- "feed_generated_at": "2026-10-21T09:32:47+00:00",
+ "feed_generated_at": "2026-10-26T15:10:45+00:00",
  "counts": {
   "sold": 1,
-  "new_listings": 7,
-  "available": 555,
-  "stale_total": 111
+  "new_listings": 16,
+  "available": 563,
+  "stale_total": 113
  },
  "sold_total": 15.0,
  "sold": [
@@ -21,10 +21,70 @@
  ],
  "new_listings": [
   {
+   "title": "Ladies 2pc Set",
+   "price": 10.0,
+   "date": "2026-10-24",
+   "url": "https://poshmark.com/listing/6adcf429d73373f676237204"
+  },
+  {
+   "title": "Long Fitted Dress",
+   "price": 13.0,
+   "date": "2026-10-25",
+   "url": "https://poshmark.com/listing/6ade63b24dfc81ebb33f977a"
+  },
+  {
+   "title": "Ladies Metallic Pants",
+   "price": 15.0,
+   "date": "2026-10-24",
+   "url": "https://poshmark.com/listing/6adced14d7337395b41f7fcc"
+  },
+  {
+   "title": "New! Studded Skirt",
+   "price": 25.0,
+   "date": "2026-10-24",
+   "url": "https://poshmark.com/listing/6add2a8c1b7e500315bbf3f5"
+  },
+  {
+   "title": "“Thing” Halloween Prop",
+   "price": 13.0,
+   "date": "2026-10-21",
+   "url": "https://poshmark.com/listing/6ad8fcf28091ef10b90db9c1"
+  },
+  {
    "title": "Boys Thermal Set",
    "price": 8.0,
    "date": "2026-10-20",
    "url": "https://poshmark.com/listing/6ad84c0b32f9343bcd40560e"
+  },
+  {
+   "title": "Women's Pearl and Rhinestone Earrings",
+   "price": 8.0,
+   "date": "2026-10-24",
+   "url": "https://poshmark.com/listing/6add7b930c8b47651a7e35c3"
+  },
+  {
+   "title": "Over The Knee Boots",
+   "price": 25.0,
+   "date": "2026-10-21",
+   "url": "https://poshmark.com/listing/6ad8d0817625b1fbf971d56e"
+  },
+  {
+   "title": "White Knee-High Pointed Toe Stiletto Boots",
+   "price": 25.0,
+   "date": "2026-10-21",
+   "url": "https://poshmark.com/listing/6ad9648756502b7a92a69c52"
+  },
+  {
+   "title": "Boys Adidas Jacket",
+   "price": 9.0,
+   "date": "2026-10-20",
+   "url": "https://poshmark.com/listing/6ad7aa55b9dd70e3e3027ed7"
+  },
+  {
+   "title": "Girls Flare Jeggings",
+   "price": 8.0,
+   "date": "2026-10-22",
+   "url": "https://poshmark.com/listing/6ada514d70333f0aa47eb6c6"
   },
   {
    "title": "Ladies Mini Dress",
@@ -39,18 +99,6 @@
    "url": "https://poshmark.com/listing/6ad7b06731f0f62ee3cd7f16"
   },
   {
-   "title": "Boys Adidas Jacket",
-   "price": 9.0,
-   "date": "2026-10-20",
-   "url": "https://poshmark.com/listing/6ad7aa55b9dd70e3e3027ed7"
-  },
-  {
-   "title": "New! Ladies Fashion Earrings",
-   "price": 15.0,
-   "date": "2026-10-14",
-   "url": "https://poshmark.com/listing/6ad03579ad242af930f568ad"
-  },
-  {
    "title": "Ladies Two Piece Outfit",
    "price": 20.0,
    "date": "2026-10-19",
@@ -58,81 +106,87 @@
   },
   {
    "title": "New! Ladies Fashion Earrings",
-   "price": 15.0,
-   "date": "2026-10-15",
-   "url": "https://poshmark.com/listing/6ad1383a571a7e4714620ab4"
+   "price": 5.0,
+   "date": "2026-10-24",
+   "url": "https://poshmark.com/listing/6add76bcdc9435fe80998a90"
+  },
+  {
+   "title": "Ladies Fashion Earrings",
+   "price": 6.0,
+   "date": "2026-10-24",
+   "url": "https://poshmark.com/listing/6adcfbb8ef676c9fc47a7a3f"
   }
  ],
  "top_stale": [
   {
-   "title": "Floral Print Skirt",
-   "price": 7.0,
-   "days_listed": 3428,
-   "likes": 0,
-   "url": "https://poshmark.com/listing/5931e4c84e8d1770960012a1"
-  },
-  {
    "title": "Special Occasion Gown",
    "price": 150.0,
-   "days_listed": 3053,
+   "days_listed": 3058,
    "likes": 0,
    "url": "https://poshmark.com/listing/5b1fe840baebf649acf3e705"
   },
   {
    "title": "New! Animal Print Earrings",
    "price": 8.0,
-   "days_listed": 1979,
+   "days_listed": 1984,
    "likes": 0,
    "url": "https://poshmark.com/listing/60a8011a3cda88b056d36034"
   },
   {
    "title": "Lace Top",
    "price": 8.0,
-   "days_listed": 1928,
+   "days_listed": 1933,
    "likes": 0,
    "url": "https://poshmark.com/listing/60eb89e34fd23a7c129b25d3"
   },
   {
    "title": "New! Women’s Top",
    "price": 6.0,
-   "days_listed": 1877,
+   "days_listed": 1882,
    "likes": 0,
    "url": "https://poshmark.com/listing/612e862d67bd9198ddcc84bc"
   },
   {
    "title": "New! Women’s Top",
    "price": 25.0,
-   "days_listed": 1874,
+   "days_listed": 1879,
    "likes": 0,
    "url": "https://poshmark.com/listing/6132cec47f80d295e4a7f263"
   },
   {
    "title": "New! Pet Birthday Bandana",
    "price": 13.0,
-   "days_listed": 1852,
+   "days_listed": 1857,
    "likes": 0,
    "url": "https://poshmark.com/listing/614fb11fffba94f9277bbb57"
   },
   {
    "title": "New! Animal Print Earrings",
    "price": 8.0,
-   "days_listed": 1753,
+   "days_listed": 1758,
    "likes": 0,
    "url": "https://poshmark.com/listing/61d27a3c074d24d168c894db"
   },
   {
    "title": "New! Kids Fashion Sneakers",
    "price": 13.0,
-   "days_listed": 1749,
+   "days_listed": 1754,
    "likes": 0,
    "url": "https://poshmark.com/listing/61d7dd7b93649f6c3ecf2c9d"
   },
   {
    "title": "Ladies Top",
    "price": 8.0,
-   "days_listed": 1458,
+   "days_listed": 1463,
    "likes": 0,
    "url": "https://poshmark.com/listing/63573b16bd0629358c824241"
+  },
+  {
+   "title": "Ladies Denim Jeans",
+   "price": 20.0,
+   "days_listed": 1462,
+   "likes": 0,
+   "url": "https://poshmark.com/listing/63589e13ff0484fc1b7ef804"
   }
  ],
  "note": "Sold prices are Poshmark list prices (actual sale price is not public)."
