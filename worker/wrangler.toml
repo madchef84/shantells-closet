@@ -2,10 +2,3 @@ name = "shantells-closet-feed"
 main = "index.js"
 compatibility_date = "2024-09-23"
 workers_dev = true
-
-[[kv_namespaces]]
-binding = "FEED"
-id = "d85b4817767b4789875ea323d7820caf"
-
-[triggers]
-crons = ["*/2 * * * *"]

@@ -1,6 +1,6 @@
 /* Shantell's Closet - notifications + sounds (v1.4.0). Self-contained. */
 (function(){
-var LS={seen:'sc_sold_seen_v1',hist:'sc_notif_hist_v1',gen:'sc_gen_seen_v1',set:'sc_sound_settings_v1'};
+var LS={seen:'sc_sold_seen_v20',hist:'sc_notif_hist_v20',gen:'sc_gen_seen_v20',set:'sc_sound_settings_v20'};
 function jget(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
 function jset(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 var S=Object.assign({on:true,vol:0.7,sale:'chaching',other:'chime',sys:false},jget(LS.set,{}));

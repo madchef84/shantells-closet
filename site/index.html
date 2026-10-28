@@ -130,7 +130,7 @@ header>*:not(.h3d){position:relative;z-index:1}
 @media (max-width:560px){.rack{transform:scale(.62);transform-origin:right center;right:92px;opacity:.8}}
 @media (prefers-reduced-motion:reduce){.silk,.car,.hg b:after{animation:none!important}.car{transform:rotateY(20deg)}}
 </style></head><body>
-<header><div class="h3d" aria-hidden="true"><span class="silk a"></span><span class="silk b"></span><div class="rack"><div class="car"><span class="hg" style="--i:0;--c:#e6a1c6"><i></i><b></b></span><span class="hg" style="--i:1;--c:#f3dfae"><i></i><b></b></span><span class="hg" style="--i:2;--c:#9b5fd0"><i></i><b></b></span><span class="hg" style="--i:3;--c:#fff"><i></i><b></b></span><span class="hg" style="--i:4;--c:#c99a3e"><i></i><b></b></span><span class="hg" style="--i:5;--c:#5a2275"><i></i><b></b></span></div></div></div><div class="kick">✦ Resale boutique</div><h1>Shantell's Closet<span class="ver" id="ver">v1.10.0</span></h1></header>
+<header><div class="h3d" aria-hidden="true"><span class="silk a"></span><span class="silk b"></span><div class="rack"><div class="car"><span class="hg" style="--i:0;--c:#e6a1c6"><i></i><b></b></span><span class="hg" style="--i:1;--c:#f3dfae"><i></i><b></b></span><span class="hg" style="--i:2;--c:#9b5fd0"><i></i><b></b></span><span class="hg" style="--i:3;--c:#fff"><i></i><b></b></span><span class="hg" style="--i:4;--c:#c99a3e"><i></i><b></b></span><span class="hg" style="--i:5;--c:#5a2275"><i></i><b></b></span></div></div></div><div class="kick">✦ Resale boutique</div><h1>Shantell's Closet<span class="ver" id="ver">v2.0.0</span></h1></header>
 <button class="upd" id="updBar">A new version is ready. Tap to update</button>
 <div class="tabs"><button id="tStock" class="on">In Stock</button><button id="tSold">Sold</button><button id="tBuyers">Buyers</button><button id="tMore">Backup</button></div>
 <div class="wrap">
@@ -139,7 +139,7 @@ header>*:not(.h3d){position:relative;z-index:1}
   <div class="chips" id="chips"></div>
   <div class="summary"><span id="cnt"></span><span id="val"></span></div>
   <div id="remind"></div><div id="syncRow" class="row" style="margin:4px 0"><button id="syncBtn">Check for sales</button><button id="alertBtn" class="hidden">🔔 Turn on sale alerts</button></div><div id="syncMsg" class="meta"></div><div id="newPanel"></div>
-  <details class="panel" id="viPanel"><summary><b>Vinted</b>: quick-add an item · <a id="viCloset" href="https://www.vinted.com/member/70856845-shantelljerome" target="_blank" rel="noopener">View my Vinted closet ↗</a></summary>
+  <details class="panel" id="viPanel"><summary><b>Vinted</b>: quick-add an item · <a id="viCloset" href="https://www.vinted.com/member/" target="_blank" rel="noopener">View my Vinted closet ↗</a></summary>
    <label for="viUrl">Vinted item link</label><input id="viUrl" type="url" inputmode="url" placeholder="https://www.vinted.com/items/…">
    <label for="viTitle">Title</label><input id="viTitle">
    <div class="row"><div><label for="viPrice">Price $</label><input id="viPrice" type="number" inputmode="decimal" step="0.01"></div><div><label for="viQty">Qty</label><input id="viQty" type="number" inputmode="numeric" min="0" step="1" value="1"></div></div>
@@ -169,7 +169,7 @@ header>*:not(.h3d){position:relative;z-index:1}
   <p><button id="tplDl" style="width:100%">Download blank CSV template</button></p>
   <p><button class="primary" id="tourBtn" style="width:100%">✨ What's new</button></p>
   <p><button id="updChk" style="width:100%">Check for updates</button></p>
-  <p class="meta" id="updMsg">App version v1.10.0</p>
+  <p class="meta" id="updMsg">App version v2.0.0</p>
   <p class="meta">Everything is saved only on this device. Make a backup now and then.</p>
  </section>
 </div>
@@ -229,7 +229,7 @@ header>*:not(.h3d){position:relative;z-index:1}
 
 <script>
 (function(){
-var KEY='chantel_closet_v1';
+var KEY='chantel_v20_v1';
 var BUILTIN=[['pm','Poshmark','#7f0353'],['me','Mercari','#4b3fd1'],['fb','Facebook Marketplace','#1877f2'],['ig','Instagram','#d62976'],['nd','Nextdoor','#00a54f'],['eb','eBay','#e53238'],['dp','Depop','#c8102e'],['vi','Vinted','#007782'],['et','Etsy','#f1641e'],['ou','OfferUp','#00a87e'],['cl','Craigslist','#5a2d82'],['tt','TikTok Shop','#111111'],['tu','ThredUp','#2c6e49'],['rr','The RealReal','#6b5b3e'],['gr','Grailed','#444b55'],['sh','Shopify / own site','#5e8e3e']];
 var CUSTOM_COLORS=['#b5651d','#8e44ad','#16a085','#c0392b','#2c3e50','#d35400','#7f8c8d','#27ae60','#a0522d','#1abc9c'];
 var P={},COL={},ORDER=[];
@@ -417,7 +417,7 @@ $('iOk').onclick=function(){var res=buildItems(false).filter(function(x){return 
  save();$('mImp').classList.remove('show');render();tab('Stock');toast('Imported '+res.length+' item'+(res.length===1?'':'s')+'.',function(){items=before;save();render()})};
 $('tplDl').onclick=function(){dl('shantells_closet_template.csv','Title,Brand,Size,Price,Cost,Quantity,Platform,URL,Status,Category,Color,Condition,Notes\nExample: Floral Wrap Dress,Free People,M,38,12,1,Poshmark; Mercari,https://poshmark.com/listing/Floral-Wrap-Dress-123abc,In stock,Dresses,Pink,Like new,Delete this example row\n','text/csv')};
 // ---- updates ----
-var APP_VERSION='1.10.0',swReg=null,reloading=false;
+var APP_VERSION='2.0.0',swReg=null,reloading=false;
 function showUpd(){$('updBar').classList.add('show');$('updMsg').textContent='App version v'+APP_VERSION+' — a new version is ready.'}
 function watch(reg){if(reg.waiting&&navigator.serviceWorker.controller)showUpd();
  reg.addEventListener('updatefound',function(){var nw=reg.installing;if(!nw)return;nw.addEventListener('statechange',function(){if(nw.state==='installed'&&navigator.serviceWorker.controller)showUpd()})})}
@@ -431,8 +431,8 @@ if('serviceWorker' in navigator){var hadCtl=!!navigator.serviceWorker.controller
  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')checkUpd(false)})}
 // ---- v1.3: sales sync ----
 function pendingDelist(it){if(!it.sold||!it.delist)return [];return Object.keys(it.delist).filter(function(k){return !it.delist[k]})}
-var MYL={me:'https://www.mercari.com/mypage/listings/',fb:'https://www.facebook.com/marketplace/you/selling',vi:'https://www.vinted.com/member/items',nd:'https://nextdoor.com/for_sale_and_free/your_items/',eb:'https://www.ebay.com/sh/lst/active',dp:'https://www.depop.com/',pm:'https://poshmark.com/closet/shannynicole',et:'https://www.etsy.com/your/shops/me/tools/listings',ou:'https://offerup.com/accounts/selling',ig:'https://www.instagram.com/',whatnot:'https://www.whatnot.com/dashboard/listings'};
-var SRCH={me:'https://www.mercari.com/search/?keyword=',fb:'https://www.facebook.com/marketplace/search/?query=',vi:'https://www.vinted.com/catalog?search_text=',eb:'https://www.ebay.com/sch/i.html?_nkw=',dp:'https://www.depop.com/search/?q=',pm:'https://poshmark.com/closet/shannynicole?query=',whatnot:'https://www.whatnot.com/search?query=',et:'https://www.etsy.com/search?q=',ou:'https://offerup.com/search?q=',nd:'https://nextdoor.com/search/?query='};
+var MYL={me:'https://www.mercari.com/mypage/listings/',fb:'https://www.facebook.com/marketplace/you/selling',vi:'https://www.vinted.com/member/items',nd:'https://nextdoor.com/for_sale_and_free/your_items/',eb:'https://www.ebay.com/sh/lst/active',dp:'https://www.depop.com/',pm:'https://poshmark.com/closet/',et:'https://www.etsy.com/your/shops/me/tools/listings',ou:'https://offerup.com/accounts/selling',ig:'https://www.instagram.com/',whatnot:'https://www.whatnot.com/dashboard/listings'};
+var SRCH={me:'https://www.mercari.com/search/?keyword=',fb:'https://www.facebook.com/marketplace/search/?query=',vi:'https://www.vinted.com/catalog?search_text=',eb:'https://www.ebay.com/sch/i.html?_nkw=',dp:'https://www.depop.com/search/?q=',pm:'https://poshmark.com/closet/?query=',whatnot:'https://www.whatnot.com/search?query=',et:'https://www.etsy.com/search?q=',ou:'https://offerup.com/search?q=',nd:'https://nextdoor.com/search/?query='};
 function pkey(k){var n=pName(k).toLowerCase();if(/whatnot/.test(n))return 'whatnot';return k}
 function delistLinks(it,k){var L=it.links||{},own=L[k]||(detectPlat(it.url)===k?it.url:''),pk=pkey(k),t=encodeURIComponent(it.name||'');
  return {open:own||MYL[pk]||(SRCH[pk]?SRCH[pk]+t:''),search:SRCH[pk]?SRCH[pk]+t:'https://www.google.com/search?q='+encodeURIComponent(pName(k)+' '+(it.name||''))}}
@@ -446,12 +446,12 @@ $('dDone').onclick=function(){$('mDelist').classList.remove('show');render()};
 function lid(u){u=String(u||'');var m=u.match(/([0-9a-f]{24})(?:[\/?#]|$)/i);return m?m[1].toLowerCase():null}
 function itemIds(){var m={};items.forEach(function(i){[i.url].concat(Object.keys(i.links||{}).map(function(k){return i.links[k]})).forEach(function(u){var x=lid(u);if(x)m[x]=i})});return m}
 // Listings feed: live from the Cloudflare Worker (refreshes from Poshmark about hourly); falls back to the bundled copy if offline/unreachable.
-var FEED_URL='https://shantells-closet-feed.madchef84.workers.dev/posh_feed.json';
+var FEED_URL='posh_feed.json';var OLD_FEED='https://shantells-closet-feed.madchef84.workers.dev/posh_feed.json';
 function loadFeed(){function loc(){return fetch('./posh_feed.json?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()})}
  return fetch(FEED_URL+'?t='+Date.now(),{cache:'no-store',mode:'cors'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(f){if(!f||!f.available)throw 0;return f}).catch(loc)}
 window.loadFeed=loadFeed;
-var DKEY='chantel_closet_dismissed',feed=null;
-var AKEY='chantel_closet_applied_sales';
+var DKEY='chantel_v20_dismissed',feed=null;
+var AKEY='chantel_v20_applied_sales';
 function appliedSales(){try{return JSON.parse(localStorage.getItem(AKEY))||{}}catch(e){return {}}}
 function saveApplied(a){try{localStorage.setItem(AKEY,JSON.stringify(a))}catch(e){}}
 function dismissed(){try{return JSON.parse(localStorage.getItem(DKEY))||{}}catch(e){return {}}}
@@ -499,7 +499,7 @@ $('viAdd').onclick=function(){var u=($('viUrl').value.match(/https?:\/\/\S+/i)||
 // ---- v1.10: Post to my sites (crosslist helper: copy + open; no site has a public listing API) ----
 var CREATE={pm:'https://poshmark.com/create-listing',vi:'https://www.vinted.com/items/new',me:'https://www.mercari.com/sell/',eb:'https://www.ebay.com/sl/prelist/suggest',dp:'https://www.depop.com/products/create/',fb:'https://www.facebook.com/marketplace/create/item',et:'https://www.etsy.com/your/shops/me/listing-editor/create',ou:'https://offerup.com/post',gr:'https://www.grailed.com/sell/new',nd:'https://nextdoor.com/for_sale_and_free/',ig:'https://www.instagram.com/'};
 var TLIM={pm:80,me:80,eb:80,vi:100,gr:60,et:140};
-var XTKEY='chantel_closet_xp_templates';
+var XTKEY='chantel_v20_xp_templates';
 var DEF_XT={pm:'{title}\n\n{notes}\n\nBrand: {brand}\nSize: {size}\nColor: {color}\nCondition: {condition}\nCategory: {category}\n\nPrice: ${price}\n💜 Bundle 2+ items for a discount. Offers welcome!',
  vi:'{title}\n\n{notes}\n\nBrand: {brand}\nSize: {size}\nColour: {color}\nCondition: {condition}\n\nPrice: ${price}\n💜 Bundle discounts available. Smoke-free home.',
  _:'{title}\n\n{notes}\n\nBrand: {brand}\nSize: {size}\nColor: {color}\nCondition: {condition}\n\nPrice: ${price}'};
@@ -543,7 +543,7 @@ function xpClick(e){var b=e.target,x=b.getAttribute('data-x');if(!x||b.tagName==
  if(x==='unpost'){it.platforms=(it.platforms||[]).filter(function(p){return p!==k});if(it.xpost)delete it.xpost[k];save();renderXP()}}
 $('xpList').onclick=xpClick;$('xpMore').onclick=xpClick;
 // ---- v1.10: automatic pick-up of new Poshmark listings ----
-var SKEY='chantel_closet_posh_seen';
+var SKEY='chantel_v20_posh_seen';
 function poshSeen(){try{return JSON.parse(localStorage.getItem(SKEY))}catch(e){return null}}
 function dismissItem(it){var d=dismissed(),n=0;[it.url,(it.links||{}).pm].forEach(function(u){var x=detectPlat(u)==='pm'&&lid(u);if(x){d[x]=1;n++}});if(n)localStorage.setItem(DKEY,JSON.stringify(d))}
 function restoreExtras(d){if(d.dismissedPosh&&typeof d.dismissedPosh==='object'){var m=dismissed();Object.keys(d.dismissedPosh).forEach(function(k){m[k]=1});localStorage.setItem(DKEY,JSON.stringify(m))}
@@ -577,7 +577,7 @@ window.__closetShare=function(sub,txt){onShare(sub,txt,'')};
 (function(){try{var q=new URLSearchParams(location.search);if(q.has('share')||q.has('text')||q.has('url')||q.has('title')){var a=q.get('title')||'',b=q.get('text')||'',c=q.get('url')||'';history.replaceState(null,'',location.pathname);setTimeout(function(){onShare(a,b,c)},600)}}catch(e){}})();
 
 // daily reminder
-var RKEY='chantel_closet_remind_day';
+var RKEY='chantel_v20_remind_day';
 function remind(force){var P2=items.filter(function(i){return pendingDelist(i).length});if(!P2.length){$('remind').innerHTML='';return}
  var day=new Date().toDateString();if(!force&&localStorage.getItem(RKEY)===day&&!$('remind').innerHTML)return;localStorage.setItem(RKEY,day);
  $('remind').innerHTML='<div class="banner"><b>Still listed elsewhere ('+P2.length+'):</b> '+P2.slice(0,8).map(function(i){return esc(i.name)+' <span class="meta">('+pendingDelist(i).map(pName).map(esc).join(', ')+')</span>'}).join('; ')+(P2.length>8?'…':'')+'<br><button id="rShow">Show them</button> <button id="rHide">Dismiss for today</button></div>';
@@ -597,14 +597,14 @@ function staleInfo(it){var x=lid(it.url||(it.links||{}).pm),a=null;if(x&&feed)a=
  var d=a&&a.date_listed?a.date_listed+'T12:00:00':it.added,likes=a?(a.likes||0):null;return {days:d?Math.floor((Date.now()-new Date(d))/864e5):0,likes:likes}}
 function isStale(it){if(it.sold)return false;var s=staleInfo(it);return s.days>=30&&!s.likes}
 // ---- v1.3.1: buyers + messaging ----
-var BKEY='chantel_closet_buyers';
+var BKEY='chantel_v20_buyers';
 var DEF_TPL=[['Thanks for your purchase','Thank you so much for your purchase! 💜 I will get it packed up and shipped out within 1 business day. Enjoy!'],
  ['Shipped today','Great news, your order shipped today! 📦 Tracking is in your order details. Thanks again for shopping my closet! 💜'],
  ['Offer counter','Thank you for your offer! The lowest I can go is $___. Let me know if that works for you. 💜'],
  ['Bundle discount','Bundle 2 or more items and I will give you ___% off plus save on shipping! Just add them to a bundle and I will send you a private offer. 💜'],
  ['Still available?','Yes, it is still available! 💜 Let me know if you have any questions or would like more photos.']];
 var BD;try{BD=JSON.parse(localStorage.getItem(BKEY))}catch(e){}
-if(!BD||!Array.isArray(BD.buyers))BD={buyers:[],templates:null};if(!Array.isArray(BD.templates))BD.templates=DEF_TPL.map(function(t){return {name:t[0],text:t[1]}});
+if(!BD||!Array.isArray(BD.buyers))BD={buyers:[],templates:null};if(!Array.isArray(BD.templates))BD.templates=items.map(function(t){return {name:t[0],text:t[1]}});
 function bsave(){try{localStorage.setItem(BKEY,JSON.stringify(BD))}catch(e){alert('Could not save.')}}
 var INBOX={pm:'https://poshmark.com/news/comments',fb:'https://www.facebook.com/marketplace/inbox',me:'https://www.mercari.com/mypage/messages/',dp:'https://www.depop.com/messages/',eb:'https://www.ebay.com/mesg',vi:'https://www.vinted.com/inbox',ou:'https://offerup.com/inbox',nd:'https://nextdoor.com/inbox/',ig:'https://www.instagram.com/direct/inbox/',et:'https://www.etsy.com/messages'};
 function msgUrl(k,it){if(k==='pm'){var u=it&&((it.links||{}).pm||(detectPlat(it.url)==='pm'?it.url:''));return u||INBOX.pm}return INBOX[k]||''}
@@ -639,14 +639,14 @@ $('tplList').onclick=function(e){var c=e.target.getAttribute('data-tc'),i=e.targ
  if(c==='copy'){copyText(BD.templates[i].text);toast('Copied "'+esc(BD.templates[i].name)+'". Paste it in the chat.')}
  if(c==='del'&&confirm('Remove this template?')){BD.templates.splice(i,1);bsave();renderBuyers()}};
 $('tplAdd').onclick=function(){BD.templates.push({name:'New reply',text:''});bsave();renderBuyers()};
-$('tplReset').onclick=function(){if(confirm('Reset quick replies to the defaults?')){BD.templates=DEF_TPL.map(function(t){return {name:t[0],text:t[1]}});bsave();renderBuyers()}};
+$('tplReset').onclick=function(){if(confirm('Reset quick replies to the defaults?')){BD.templates=items.map(function(t){return {name:t[0],text:t[1]}});bsave();renderBuyers()}};
 // sale alerts button (one-time)
-if(window.Notification&&Notification.permission==='default'&&!localStorage.getItem('chantel_closet_alert_asked'))$('alertBtn').classList.remove('hidden');
-$('alertBtn').onclick=function(){localStorage.setItem('chantel_closet_alert_asked','1');$('alertBtn').classList.add('hidden');try{var pr=Notification.requestPermission(function(){});if(pr&&pr.then)pr.then(function(r){toast(r==='granted'?'Sale alerts are on 🔔':'Sale alerts not enabled. You can turn them on in Settings later.')})}catch(e){}};
+if(window.Notification&&Notification.permission==='default'&&!localStorage.getItem('chantel_v20_alert_asked'))$('alertBtn').classList.remove('hidden');
+$('alertBtn').onclick=function(){localStorage.setItem('chantel_v20_alert_asked','1');$('alertBtn').classList.add('hidden');try{var pr=Notification.requestPermission(function(){});if(pr&&pr.then)pr.then(function(r){toast(r==='granted'?'Sale alerts are on 🔔':'Sale alerts not enabled. You can turn them on in Settings later.')})}catch(e){}};
 
 // ================= WHAT'S NEW TOUR =================
 // RELEASE_NOTES: one entry per app version, shown once the first time she opens that version
-// (last seen version is stored in localStorage 'chantel_closet_tour_seen'; replay via Backup tab > "What's new" or tapping the version badge).
+// (last seen version is stored in localStorage 'chantel_v20_tour_seen'; replay via Backup tab > "What's new" or tapping the version badge).
 // HOW TO ADD THE NEXT VERSION:
 //  1) Bump APP_VERSION above, the #ver badge / updMsg text, and VERSION + cache name (C) in sw.js (e.g. shantells-closet-v7).
 //  2) Add a key here, e.g. '1.3.3':[ {tab:'Stock', sel:['#someId'], title:'Short title', text:'One line about it.'}, ... ]
@@ -654,7 +654,7 @@ $('alertBtn').onclick=function(){localStorage.setItem('chantel_closet_alert_aske
 //     sel  = CSS selectors tried in order; first VISIBLE match is spotlighted (no match = centered card, step still shows)
 //  3) The tour plays the entry for APP_VERSION automatically; nothing else to wire up.
 var RELEASE_NOTES={
- '1.10.0':[
+ '2.0.0':[
   {tab:'Stock',sel:['[data-a="xpost"]','#list'],title:'Post to my sites 📤',text:'Tap "📤 Post" on any item (or "Save & post" when adding one). Pick Poshmark, Vinted or another site: the listing text is copied for you and the site\'s new-listing page opens. Paste, add photos, post, then paste the new link back. Each site shows pending or posted.'},
   {tab:'Stock',sel:['[data-a="xpost"]','#list'],title:'Photos straight to the app 📷',text:'On your phone, "Share photo + text" sends the item photo and description to the Poshmark or Vinted app in one go.'},
   {tab:'Stock',sel:['#newPanel','#syncBtn'],title:'New Poshmark listings add themselves ✨',text:'When you list something new on Poshmark, it shows up here by itself (within about 10 minutes) with a pink "New from Poshmark" badge. Tap Undo if you don\'t want it. Items you delete never come back.'},
@@ -685,7 +685,7 @@ var RELEASE_NOTES={
   {tab:'Stock',sel:['[data-f="stale"]','#chips'],title:'Needs a refresh',text:'Items listed 30+ days with no likes get a gold badge. Use this filter to find them, then drop the price or change the cover photo.'},
   {tab:'Stock',sel:['#add'],title:'Photo checklist',text:'When you add or edit an item, check off front, back, tag, measurements, flaws and flat lay. Aim for at least 4.'}
  ]};
-var TKEY='chantel_closet_tour_seen',tourSteps=[],tourI=0;
+var TKEY='chantel_v20_tour_seen',tourSteps=[],tourI=0;
 function vis(el){if(!el)return false;var r=el.getBoundingClientRect();return r.width>0&&r.height>0&&getComputedStyle(el).visibility!=='hidden'}
 function tourShow(){var st=tourSteps[tourI];if(st.tab){tab(st.tab);if(st.tab==='Buyers')renderBuyers()}
  var el=null;(st.sel||[]).some(function(q){var c=document.querySelector(q);if(vis(c)){el=c;return true}});
@@ -708,5 +708,5 @@ window.__closet={autoPick:autoPick,openXP:openXP,xpText:xpText,onShare:onShare,d
 
 })();
 </script>
-<script src="./notify.js?v=1.10.0"></script>
+<script src="./notify.js?v=2.0.0"></script>
 </body></html>

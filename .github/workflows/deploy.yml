@@ -9,24 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with: { ref: sync-state, path: _state }
-      - name: Keep sync outputs (new_sales.json, recap.html, recap.json)
-        run: |
-          for f in new_sales.json recap.html recap.json; do
-            if [ -f "_state/$f" ]; then cp "_state/$f" site/
-            else curl -fsS "https://shantells-closet.surge.sh/$f" -o "site/$f" || echo "warn: no $f"; fi
-          done
-          ls -la site
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
-      - name: Bump service-worker cache version
-        run: sed -i -E "s/const C='shantells-closet-[^']*'/const C='shantells-closet-gh${GITHUB_RUN_NUMBER}'/" site/sw.js && head -c 120 site/sw.js
       - name: Deploy to Surge
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
         run: npx -y surge ./site shantells-closet.surge.sh
-      - name: Check live
-        run: |
-          for p in "" new_sales.json recap.html recap.json; do curl -fsS -o /dev/null -w "$p %{http_code}\n" "https://shantells-closet.surge.sh/$p"; done
